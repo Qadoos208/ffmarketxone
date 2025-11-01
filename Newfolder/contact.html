@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Free Fire ID Buy & Sell</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+        /* Footer Styles */
+        .site-footer {
+            background-color: #111;
+            color: #ccc;
+            padding: 40px 20px;
+            font-family: sans-serif;
+        }
+        .site-footer .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .site-footer .footer-section {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+        .site-footer .footer-section.brand {
+            flex: 1 1 250px;
+        }
+        .site-footer h2, .site-footer h4 {
+            color: #fff;
+            margin-top: 0;
+        }
+        .site-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .site-footer ul li {
+            margin-bottom: 8px;
+        }
+        .site-footer a {
+            color: #ccc;
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color 0.2s;
+        }
+        .site-footer a:hover {
+            color: #ff9800;
+        }
+        .site-footer hr {
+            border: 1px solid #333;
+            margin: 30px 0;
+        }
+        .site-footer .copyright {
+            text-align: center;
+            color: #777;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .site-footer .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+            .site-footer .footer-section {
+                flex: 1 1 100%;
+                margin-bottom: 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .site-footer {
+                padding: 24px 6px;
+            }
+            .site-footer .footer-container {
+                padding: 0 2vw;
+            }
+            .site-footer h2, .site-footer h4 {
+                font-size: 1.1em;
+            }
+            .site-footer .footer-section {
+                margin-bottom: 18px;
+            }
+            .site-footer .copyright {
+                font-size: 0.95em;
+            }
+        }
+        .close-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            margin-left: auto;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            z-index: 1100;
+        }
+        .close-toggle span {
+            font-size: 2.2em;
+            color: #fff;
+            line-height: 1;
+            text-align: center;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .menu-toggle span {
+            height: 4px;
+            width: 100%;
+            background: #fff;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: black;
+            padding: 32px 20px;
+            flex-wrap: wrap;
+        }
+        .navbar .logo {
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            transition: left 0.3s;
+        }
+        .navbar ul li {
+            margin-left: 20px;
+        }
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.4em;
+            transition: color 0.2s;
+        }
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: row;
+                align-items: center;
+                padding: 10px 8px;
+            }
+            .navbar .logo {
+                margin-bottom: 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .navbar ul {
+                position: fixed;
+                top: -260px;
+                left: 0;
+                right: 0;
+                width: 100vw;
+                height: auto;
+                background: #222;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 70px 0 20px 0;
+                z-index: 1000;
+                transition: top 0.3s;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            }
+            .navbar ul.active {
+                top: 0;
+                display: flex;
+            }
+            .navbar ul li {
+                margin: 18px 0 0 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 8px 2vw;
+            }
+            .navbar ul li a {
+                font-size: 1em;
+            }
+        }
+    body { font-family: 'Poppins', sans-serif; background-color: #0c0c0c; margin: 0; color: #fff; }
+
+    /* Brand logo/link */
+  .navbar .logo a { text-decoration: none; color: #ff4747; font-size: 1.1em; font-weight: 700; letter-spacing: 1px; transition: color 0.3s ease, transform 0.3s ease; }
+  .navbar .logo a:hover { color: #ff0000; transform: scale(1.05); }
+
+    /* Contact card like Sign In */
+    .container {
+      max-width: 420px;
+      margin: 80px auto;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,71,71,0.12);
+      padding: 40px 30px;
+    }
+    h1 { text-align: center; color: #ff4747; margin-bottom: 18px; }
+    form { display: flex; flex-direction: column; gap: 14px; }
+    input, textarea { padding: 12px; border-radius: 6px; border: 1px solid #333; background: #0c0c0c; color: #fff; outline: none; }
+    input:focus, textarea:focus { border-color: #ff4747; }
+    .buy-btn { background: #ff4747; color: #fff; padding: 12px 0; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; font-weight: 700; }
+    .buy-btn:hover { background: #ff2626; }
+    </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">FFMarket Zone</a></div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="close-toggle" id="close-toggle">
+      <span>&#10005;</span>
+    </div>
+    <ul id="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ids.html">IDs</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Form -->
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Enter your phone number" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="buy-btn">Send Message</button>
+    </form>
+    <p id="response"></p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-section brand">
+        <h2>FFMarket Zone</h2>
+        <p>Trusted platform to buy and sell Free Fire accounts securely and quickly.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="buy.html">Buy Accounts</a></li>
+          <li><a href="ids.html">Sell Accounts</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: support@ffmarketzone.com</p>
+        <p>Phone: +92 329 5350515</p>
+        <p>WhatsApp: Available 24/7</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="https://api.whatsapp.com/send/?phone=923295350515&text&type=phone_number&app_absent=0">WhatsApp</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <hr>
+    <p class="copyright">&copy; 2025 FFMarket Zone. All rights reserved.</p>
+  </footer>
+
+  <!-- Supabase Script -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = 'https://betluqegtnpriftqmasu.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJldGx1cWVndG5wcmlmdHFtYXN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM4NjM5NjksImV4cCI6MjA2OTQzOTk2OX0.vy5lRHLmqUq1lQV1U_gUuoY9QDjNupvsisC6Sb43Kr8';
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    const form = document.getElementById("contactForm");
+    const responseText = document.getElementById("response");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+const phone = document.getElementById("phone").value;
+const message = document.getElementById("message").value;
+
+const { data, error } = await supabase
+  .from("contact_messages")
+  .insert([{ name, phone, message }]);
+
+
+      if (error) {
+        responseText.innerText = "❌ Failed to send: " + error.message;
+        responseText.style.color = "red";
+      } else {
+        responseText.innerText = "✅ Message sent successfully!";
+        responseText.style.color = "lightgreen";
+        form.reset();
+      }
+    });
+
+    // Navbar toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeToggle = document.getElementById('close-toggle');
+    const navbarLinks = document.getElementById('navbar-links');
+    function openMenu() {
+      navbarLinks.classList.add('active');
+      menuToggle.style.display = 'none';
+      closeToggle.style.display = 'flex';
+    }
+    function closeMenu() {
+      navbarLinks.classList.remove('active');
+      menuToggle.style.display = 'flex';
+      closeToggle.style.display = 'none';
+    }
+    menuToggle.addEventListener('click', openMenu);
+    closeToggle.addEventListener('click', closeMenu);
+    Array.from(navbarLinks.getElementsByTagName('a')).forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html>

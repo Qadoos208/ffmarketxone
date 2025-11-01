@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy IDs - FreeFire Market Zone</title>
+  <link rel="icon" href="logo.png" />
+    <style>
+      /* Minimal responsive navbar toggle styles (keeps buy.html link names unchanged) */
+    </style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0c0c0c;
+      color: #fff;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 15px 25px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      flex-wrap: wrap;
+    }
+    .navbar .logo a {
+  text-decoration: none;     /* removes underline */
+  color: #ff4747;            /* your brand red */
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .logo a:hover {
+  color: #ff2626;            /* hover effect */
+  transform: scale(1.05);    /* slight zoom for nice interaction */
+}
+
+    .navbar ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 10px 0 0 0;
+      padding: 0;
+    }
+    .navbar ul li {
+      margin: 5px 10px;
+    }
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .navbar ul li a:hover {
+      color: #ff4747;
+    }
+    .navbar ul li a.active-link {
+      color: #ff4747;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      padding: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+
+    .id-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+      transition: 0.3s;
+      text-align: center;
+    }
+    .id-card:hover {
+      transform: scale(1.03);
+    }
+    .id-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .id-card h3 {
+      color: #ff4747;
+      font-size: 1.2em;
+      margin: 8px 0;
+    }
+    .id-card p {
+      margin: 4px 0;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    .btn {
+      background: #ff4747;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 15px;
+    }
+    .btn:hover {
+      background: #ff2626;
+    }
+
+    #logout-btn {
+      display: none;
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+
+    .popup-content {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 450px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .popup-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .close-popup {
+      background: #ff4747;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 5px;
+      float: right;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background: #111;
+      padding: 15px 0;
+      color: #888;
+      font-size: 0.9em;
+      margin-top: 30px;
+      border-top: 1px solid #222;
+    }
+       .site-footer {
+            background-color: #111;
+            color: #ccc;
+            padding: 40px 20px;
+            font-family: sans-serif;
+        }
+        .site-footer .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .site-footer .footer-section {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+        .site-footer .footer-section.brand {
+            flex: 1 1 25px;
+        }
+        .site-footer h2, .site-footer h4 {
+            color: #fff;
+            margin-top: 0;
+        }
+        .site-footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .site-footer ul li {
+            margin-bottom: 8px;
+        }
+        .site-footer a {
+            color: #ccc;
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color 0.2s;
+        }
+        .site-footer a:hover {
+            color: #ff9800;
+        }
+        .site-footer hr {
+            border: 1px solid #333;
+            margin: 30px 0;
+        }
+        .site-footer .copyright {
+            text-align: center;
+            color: #777;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .site-footer .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+            .site-footer .footer-section {
+                flex: 1 1 100%;
+                margin-bottom: 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .site-footer {
+                padding: 24px 6px;
+            }
+            .site-footer .footer-container {
+                padding: 0 2vw;
+            }
+            .site-footer h2, .site-footer h4 {
+                font-size: 1.1em;
+            }
+            .site-footer .footer-section {
+                margin-bottom: 18px;
+            }
+            .site-footer .copyright {
+                font-size: 0.95em;
+            }
+        }
+  </style>
+        <style>
+          /* Minimal responsive navbar toggle styles (keeps buy.html link names unchanged) */
+          .close-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: auto;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            z-index: 1100;
+          }
+          .close-toggle span {
+            font-size: 2.2em;
+            color: #fff;
+            line-height: 1;
+            text-align: center;
+          }
+            .menu-toggle {
+              display: none;
+              z-index: 2001; /* ensure it's above the navbar for testing */
+              position: relative;
+            }
+          .menu-toggle span {
+            height: 4px;
+            width: 100%;
+            background: #fff;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+            display: block;
+          }
+
+          @media (max-width: 900px) {
+            .menu-toggle {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              width: 36px;
+              height: 36px;
+              cursor: pointer;
+              margin-left: auto;
+            }
+            .close-toggle.active {
+              display: flex !important;
+            }
+            .navbar ul {
+              position: fixed;
+              top: -260px;
+              left: 0;
+              right: 0;
+              width: 100vw;
+              height: auto;
+              background: #222;
+              flex-direction: column;
+              align-items: flex-start;
+              padding: 70px 0 20px 0;
+              z-index: 1000;
+              transition: top 0.3s;
+              box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            }
+            .navbar ul.active {
+              top: 0;
+              display: flex;
+            }
+            .navbar ul li {
+              margin: 18px 0 0 24px;
+            }
+          }
+        </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html" >FF MARKET ZONE</a></div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="close-toggle" id="close-toggle">
+      <span>&#10005;</span>
+    </div>
+    <ul id="navbar-links">
+      <li><a href="buy.html" class="active-link">Buy IDs</a></li>
+    
+      <li><a href="ids.html">My IDs</a></li>
+    
+   
+      <li><button id="logout-btn" class="btn">Logout</button></li>
+    </ul>
+  </nav>
+   <div>
+    <h1 style="text-align:center; margin-top:20px;">Available Free Fire IDs for Sale</h1>
+    <p style="text-align:center; color:#ccc;">Browse through our collection of verified Free Fire IDs. Click on "View Details" to see more information and contact the seller.</p>
+   </div>
+  <!-- IDs Grid -->
+  <section class="grid" id="buy-grid">
+
+  </section>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content" id="popup-content">
+      <button class="close-popup" onclick="closePopup()">Close</button>
+      <div id="popup-body"></div>
+    </div>
+  </div>
+
+  <!-- JS -->
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+<script>
+const supabaseUrl = "https://betluqegtnpriftqmasu.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJldGx1cWVndG5wcmlmdHFtYXN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM4NjM5NjksImV4cCI6MjA2OTQzOTk2OX0.vy5lRHLmqUq1lQV1U_gUuoY9QDjNupvsisC6Sb43Kr8";
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// ✅ Load IDs (no login required)
+async function loadIDs() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const idParam = urlParams.get("id");
+
+  const { data, error } = await supabase
+    .from('ff_ids')
+    .select('*')
+    .order('id', { ascending: false });
+
+  const grid = document.getElementById('buy-grid');
+  grid.innerHTML = '';
+
+  if (error) {
+    grid.innerHTML = '<p style="color:#f88">Error loading IDs</p>';
+    return;
+  }
+
+  data.forEach(item => {
+    let firstUrl = '';
+    if (item.image_url) {
+      try {
+        const parsed = JSON.parse(item.image_url);
+        if (Array.isArray(parsed)) firstUrl = parsed[0] || '';
+        else if (typeof parsed === 'string') firstUrl = parsed;
+      } catch {
+        firstUrl = item.image_url;
+      }
+    }
+
+    const card = document.createElement('div');
+    card.classList.add('id-card');
+    card.innerHTML = `
+      ${firstUrl ? `<img src="${firstUrl}" alt="${item.name || 'Free Fire ID'}">`
+        : `<div style="height:200px;display:flex;align-items:center;justify-content:center;color:#999">No Image</div>`}
+      <h3>${item.name || 'Unnamed'}</h3>
+      <p>Level: ${item.level ?? '-'}</p>
+      <p>Diamonds: ${item.diamonds ?? '-'}</p>
+      <p>Price: Rs. ${item.price ?? '-'}</p>
+      <button class="btn" onclick='openPopup(${JSON.stringify(item)})'>View Details</button>
+    `;
+    grid.appendChild(card);
+
+    // ✅ Auto open popup if ?id= present
+    if (idParam && parseInt(idParam) === item.id) {
+      setTimeout(() => openPopup(item), 500);
+    }
+  });
+}
+
+// ✅ Popup Function
+function openPopup(item) {
+  const popup = document.getElementById("popup");
+  const body = document.getElementById("popup-body");
+  popup.style.display = "flex";
+
+  let firstUrl = '';
+  try {
+    const parsed = JSON.parse(item.image_url);
+    if (Array.isArray(parsed)) firstUrl = parsed[0] || '';
+    else if (typeof parsed === 'string') firstUrl = parsed;
+  } catch {
+    firstUrl = item.image_url;
+  }
+
+  // ✅ Format Contact (add +92 / remove 0)
+  let phone = item.contact ? item.contact.replace(/\D/g, '') : '';
+  if (phone.startsWith('0')) phone = phone.substring(1);
+  if (!phone.startsWith('92')) phone = '92' + phone;
+
+  const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(`UID: ${item.ff_id || '-'} - I want to buy this account`)}`;
+
+  body.innerHTML = `
+    ${firstUrl ? `<img src="${firstUrl}" alt="${item.name}" />` : ''}
+    <h3>${item.name}</h3>
+    <p><strong>UID:</strong> ${item.ff_id}</p>
+    <p><strong>Level:</strong> ${item.level}</p>
+    <p><strong>Diamonds:</strong> ${item.diamonds}</p>
+    <p><strong>Price:</strong> Rs. ${item.price}</p>
+    <p><strong>Description:</strong> ${item.description || '-'}</p>
+
+    <a href="${whatsappURL}" target="_blank"
+       style="display:inline-block; background-color:#25D366; color:white; padding:10px 20px;
+              border-radius:8px; text-decoration:none; font-weight:bold; margin-top:10px;">
+      💬 Contact on WhatsApp
+    </a>
+  `;
+}
+
+// ✅ Close popup
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+loadIDs();
+</script>
+
+<!-- Local menu toggle initializer for buy.html (ensures toggle works even if external script timing differs) -->
+<script>
+(function(){
+  const menuToggle = document.getElementById('menu-toggle');
+  const closeToggle = document.getElementById('close-toggle');
+  const navbarLinks = document.getElementById('navbar-links');
+  if (!menuToggle || !closeToggle || !navbarLinks) {
+    console.warn('buy.html: menu elements missing', { menuToggle, closeToggle, navbarLinks });
+    return;
+  }
+
+  function openMenu() {
+    navbarLinks.classList.add('active');
+    menuToggle.style.display = 'none';
+    closeToggle.classList.add('active');
+    try { menuToggle.setAttribute('aria-expanded', 'true'); } catch (e) {}
+  }
+
+  function closeMenu() {
+    navbarLinks.classList.remove('active');
+    menuToggle.style.display = 'flex';
+    closeToggle.classList.remove('active');
+    try { menuToggle.setAttribute('aria-expanded', 'false'); } catch (e) {}
+  }
+
+  // accessibility
+  try {
+    menuToggle.setAttribute('role', 'button');
+    menuToggle.setAttribute('aria-controls', 'navbar-links');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.tabIndex = 0;
+  } catch (e) {}
+
+  menuToggle.addEventListener('click', openMenu);
+  menuToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMenu(); } });
+  closeToggle.addEventListener('click', closeMenu);
+  closeToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeMenu(); } });
+  Array.from(navbarLinks.getElementsByTagName('a')).forEach(link => link.addEventListener('click', closeMenu));
+})();
+</script>
+
+<!-- Load shared site script (adds menu toggle behavior) -->
+<script src="index.js"></script>
+
+
+
+<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section brand">
+                <h2>FFMarket Zone</h2>
+                <p>Trusted platform to buy and sell Free Fire accounts securely and quickly.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="buy.html">Buy Accounts</a></li>
+                    <li><a href="ids.html">Sell Accounts</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: support@ffmarketzone.com</p>
+                <p>Phone: +92 329 5350515</p>
+                <p>WhatsApp: Available 24/7</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#">WhatsApp</a>
+                <a href="#">TikTok</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <hr>
+       © 2025 FF Market Zone | Developed with ❤️ by AbdulQadoos
+    </footer>
+</body>
+</html>
